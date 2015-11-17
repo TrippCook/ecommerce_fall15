@@ -1,0 +1,26 @@
+<h1>My Cart</h1>
+
+<div>
+	<% @line_items.each do |line_item| %>
+		<ul>
+			<!-- Name of product you are buying -->
+			<li><%= line_item.product.name %></li>
+			<!-- Price per item -->
+			<li><%= number_to_currency line_item.product.price %>/ea.</li>
+			<!-- Quantity you want to purchase -->
+			<li>Qty: <%= line_item.quantity %></li>
+			<!-- Total of your purchase -->
+			<li>Subtotal: <%= number_to_currency line_item.line_item_total %></li>
+			<li><%= link_to "Remove Item from Cart", remove_from_cart_path(id:line_item.id) %></li>
+		</ul>
+	<% end %>
+</div>
+
+<div>
+	<p>
+		<%= link_to "Continue Shopping", root_path, class: "btn btn-info" %>
+	</p>
+	<p>
+		<%= link_to "Proceed to Checkout", checkout_path, class: "btn btn-success" %>
+	</p>
+</div>

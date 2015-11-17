@@ -1,0 +1,22 @@
+<h1>Thanks for shopping with us!</h1>
+<p>Let's review your order:</p>
+
+
+<% @order.order_items.each do |k,v| %>
+	<ul>
+		<li><%= Product.find(k).name %> - <%= v %></li>
+	</ul>
+<% end %>
+
+<p>
+	Subtotal: <%= number_to_currency @order.subtotal %>
+</p>
+<p>
+	Sales Tax: + <%= number_to_currency @order.sales_tax %>
+</p>
+<p>
+	             -------
+</p>
+<p>
+	Grand Total: <%= number_to_currency @order.grand_total %>
+</p>
